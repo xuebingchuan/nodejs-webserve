@@ -7,6 +7,9 @@ http.createServer(function (req, res) {
     let route = req.url
     // console.log(route,'---','路由',fileName.fileNameArrary,'集合数组')
     if (route != '/favicon.ico '){
+        // if (route=='/static/swiper.min.js.map') {
+        //     console.log(req,'---req----')
+        // }
         if (route === '/') {
             //首页
             publicData.totalData.setPublicData('filename','airpord')
@@ -19,7 +22,7 @@ http.createServer(function (req, res) {
             statica.careContent(req,res,'')
         }else  {
             //托管项目所依赖的静态资源
-            statica.careContent(req,res,publicData.totalData.publicData.filename)
+            statica.careContent(req,res,`pages/${publicData.totalData.publicData.filename}`)
         }
     }
 }).listen(80,()=>{

@@ -86,22 +86,22 @@ window.onload = function () {
     })
 
     // 项目图片延迟加载
-    if (isPC) {
-        $("#swiper-pc .s-pro-item:nth-of-type(1) .s-pro-inner .s-pro-bg").css("background-image", "url('/resume-page/images/mecc/project1.jpg')")
-        $("#swiper-pc .s-pro-item:nth-of-type(2) .s-pro-inner .s-pro-bg").css("background-image", "url('/resume-page/images/mecc/project2.jpg')")
-        $("#swiper-pc .s-pro-item:nth-of-type(3) .s-pro-inner .s-pro-bg").css("background-image", "url('/resume-page/images/mecc/project3.jpg')")
-        $("#swiper-pc .s-pro-item:nth-of-type(4) .s-pro-inner .s-pro-bg").css("background-image", "url('/resume-page/images/mecc/project4.png')")
-        $("#swiper-pc .s-pro-item:nth-of-type(5) .s-pro-inner .s-pro-bg").css("background-image", "url('/resume-page/images/mecc/project5.png')")
-        $("#swiper-pc .s-pro-item:nth-of-type(6) .s-pro-inner .s-pro-bg").css("background-image", "url('/resume-page/images/mecc/project6.png')")
-    } else {
-        $("#swiper-mobile .s-pro-item:nth-of-type(1) .s-pro-inner .s-pro-bg").css("background-image", "url('/resume-page/images/mecc/project1.jpg')")
-        $("#swiper-mobile .s-pro-item:nth-of-type(2) .s-pro-inner .s-pro-bg").css("background-image", "url('/resume-page/images/mecc/project2.jpg')")
-        $("#swiper-mobile .s-pro-item:nth-of-type(3) .s-pro-inner .s-pro-bg").css("background-image", "url('/resume-page/images/mecc/project3.jpg')")
-        $("#swiper-mobile .s-pro-item:nth-of-type(4) .s-pro-inner .s-pro-bg").css("background-image", "url('/resume-page/images/mecc/project4.png')")
-        $("#swiper-mobile .s-pro-item:nth-of-type(5) .s-pro-inner .s-pro-bg").css("background-image", "url('/resume-page/images/mecc/project5.png')")
-        $("#swiper-mobile .s-pro-item:nth-of-type(6) .s-pro-inner .s-pro-bg").css("background-image", "url('/resume-page/images/mecc/project6.png')")
-
-    }
+    // if (isPC) {
+    //     $("#swiper-pc .s-pro-item:nth-of-type(1) .s-pro-inner .s-pro-bg").css("background-image", "url('/resume-page/images/mecc/project1.jpg')")
+    //     $("#swiper-pc .s-pro-item:nth-of-type(2) .s-pro-inner .s-pro-bg").css("background-image", "url('/resume-page/images/mecc/project2.jpg')")
+    //     $("#swiper-pc .s-pro-item:nth-of-type(3) .s-pro-inner .s-pro-bg").css("background-image", "url('/resume-page/images/mecc/project3.jpg')")
+    //     $("#swiper-pc .s-pro-item:nth-of-type(4) .s-pro-inner .s-pro-bg").css("background-image", "url('/resume-page/images/mecc/project4.png')")
+    //     $("#swiper-pc .s-pro-item:nth-of-type(5) .s-pro-inner .s-pro-bg").css("background-image", "url('/resume-page/images/mecc/project5.png')")
+    //     $("#swiper-pc .s-pro-item:nth-of-type(6) .s-pro-inner .s-pro-bg").css("background-image", "url('/resume-page/images/mecc/project6.png')")
+    // } else {
+    //     $("#swiper-mobile .s-pro-item:nth-of-type(1) .s-pro-inner .s-pro-bg").css("background-image", "url('/resume-page/images/mecc/project1.jpg')")
+    //     $("#swiper-mobile .s-pro-item:nth-of-type(2) .s-pro-inner .s-pro-bg").css("background-image", "url('/resume-page/images/mecc/project2.jpg')")
+    //     $("#swiper-mobile .s-pro-item:nth-of-type(3) .s-pro-inner .s-pro-bg").css("background-image", "url('/resume-page/images/mecc/project3.jpg')")
+    //     $("#swiper-mobile .s-pro-item:nth-of-type(4) .s-pro-inner .s-pro-bg").css("background-image", "url('/resume-page/images/mecc/project4.png')")
+    //     $("#swiper-mobile .s-pro-item:nth-of-type(5) .s-pro-inner .s-pro-bg").css("background-image", "url('/resume-page/images/mecc/project5.png')")
+    //     $("#swiper-mobile .s-pro-item:nth-of-type(6) .s-pro-inner .s-pro-bg").css("background-image", "url('/resume-page/images/mecc/project6.png')")
+    //
+    // }
 
     // 首页card 设置
     $(".project").hover3d({
@@ -144,7 +144,7 @@ window.onload = function () {
                 if (this.activeIndex == '1') { //判断是否滚动到指定页
                     if (firstTap) { //判断是否是第一次滚动到该页
                         firstTap = false;
-                        audio.play()
+                        // audio.play()
                     }
                     $(".s-big-photo").addClass("final-position")
                     $(".s-aboutme-desc").addClass("final-position")
@@ -171,7 +171,7 @@ window.onload = function () {
                 if (this.activeIndex == '1') { //判断是否滚动到指定页
                     if (firstTap) { //判断是否是第一次滚动到该页
                         firstTap = false;
-                        audio.play()
+                        // audio.play()
                         $(".s-aboutme-textarea").css("transform", "scale(1)")
                     }
                 }
@@ -189,52 +189,45 @@ window.onload = function () {
     var urla = ""
     // 在页面开始之初获取ajax
     async function aa() {
-        await $.ajax({ url: `https://autumnfish.cn/song/url?id="518894283"`, method: "get" }).then(res => {
-            console.log(res.data[0].url);
-            urla = res.data[0].url
-        })
-        console.log(urla);
+        try{
+            // await $.ajax({ url: `https://autumnfish.cn/song/url?id="518894283"`, method: "get" }).then(res => {
+            //     console.log(res.data[0].url);
+            //     urla = res.data[0].url
+            // })
+            // console.log(urla);
+            //
 
 
+            // audio 设置
+            var audio = new Audio()
+            // audio.src = "http://www.ytmp3.cn/down/32000.mp3";
+            audio.src = 'http://bingchuan.work/static/confession.mp3';
+            audio.loop = "loop";
+            audio.preload = "auto"
 
-        // audio 设置
-        var audio = new Audio()
-        // audio.src = "http://www.ytmp3.cn/down/32000.mp3";
-        audio.src = urla;
-        audio.loop = "loop";
-        audio.preload = "auto"
-
-        $(".music-player").on("click", function () {
-
-            if (audio.paused) {
-                console.log(audio.src);
-                audio.play();
-            } else {
-                console.log(22222);
-                audio.pause();
+            $(".music-player").on("click", function () {
+                if (audio.paused) {
+                    console.log(audio.src);
+                    audio.play();
+                } else {
+                    console.log(22222);
+                    audio.pause();
+                }
+            })
+            audio.onplay = function () {
+                $(".music-player").addClass("music-playing")
+                $("header").css("background-color", "transparent")
+                $("header").addClass("rainbow")
             }
-        })
-        audio.onplay = function () {
-            $(".music-player").addClass("music-playing")
-            $("header").css("background-color", "transparent")
-            $("header").addClass("rainbow")
+            audio.onpause = function () {
+                $(".music-player").removeClass("music-playing")
+                $("header").css("background-color", "#000")
+                $("header").removeClass("rainbow")
+            }
+
+        }catch (e) {
+           window.alert('未兼容该浏览器!')
         }
-        audio.onpause = function () {
-            $(".music-player").removeClass("music-playing")
-            $("header").css("background-color", "#000")
-            $("header").removeClass("rainbow")
-        }
-
-
-
-
-
-
-
-
-
-
-
 
     }
     aa()
