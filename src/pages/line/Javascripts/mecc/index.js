@@ -222,7 +222,6 @@ window.onload = function () {
                     // console.log("无法识别")
                 }
             } catch (e) {
-                console.log(e)
                 console.log('不支持该浏览器,请更换')
                 alert('未兼容该浏览器,请更换浏览器!')
                 return
