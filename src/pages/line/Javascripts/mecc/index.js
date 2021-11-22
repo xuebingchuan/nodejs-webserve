@@ -28,12 +28,14 @@ window.onload = function () {
             $pageLoading.css("display", "none")
             // 移动端首页字体淡入动画
             if (!isPC) {
-                $("#swiper-mobile .s-index-slogan>p:nth-of-type(1)").delay(1000).animate({ opacity: '1' }, 1500, function () {
-                    $("#swiper-mobile .s-index-slogan>p:nth-of-type(2)").animate({ opacity: '1' }, 1500, function () {
-                        $("#swiper-mobile .s-index-slogan>p:nth-of-type(3)").animate({ opacity: '1' }, 1500, function () { })
+                $("#swiper-mobile .s-index-slogan>p:nth-of-type(1)").delay(1000).animate({opacity: '1'}, 1500, function () {
+                    $("#swiper-mobile .s-index-slogan>p:nth-of-type(2)").animate({opacity: '1'}, 1500, function () {
+                        $("#swiper-mobile .s-index-slogan>p:nth-of-type(3)").animate({opacity: '1'}, 1500, function () {
+                        })
                     })
                 })
-                document.body.addEventListener("touchstart", function () { })
+                document.body.addEventListener("touchstart", function () {
+                })
             }
         }, 1000);
     }, 2000);
@@ -156,83 +158,98 @@ window.onload = function () {
         },
     })
     var mbSwiper = new Swiper('#swiper-mobile', {
-        direction: 'vertical', // 垂直切换选项
-        loop: false, // 循环模式选项
-        resistanceRatio: 0, // 抵抗阻力，0时完全抵抗
-        noSwiping: true, // 指定部分元素不触发拖动效果
-        // 事件 设置
-        on: {
-            slideChangeTransitionEnd: function () {
-                if (this.activeIndex == 0) {
-                    $("header").css("height", "5rem")
-                } else {
-                    $("header").css("height", "4rem")
-                }
-                if (this.activeIndex == '1') { //判断是否滚动到指定页
-                    if (firstTap) { //判断是否是第一次滚动到该页
-                        firstTap = false;
-                        // audio.play()
-                        $(".s-aboutme-textarea").css("transform", "scale(1)")
+            direction: 'vertical', // 垂直切换选项
+            loop: false, // 循环模式选项
+            resistanceRatio: 0, // 抵抗阻力，0时完全抵抗
+            noSwiping: true, // 指定部分元素不触发拖动效果
+            // 事件 设置
+            on: {
+                slideChangeTransitionEnd: function () {
+                    if (this.activeIndex == 0) {
+                        $("header").css("height", "5rem")
+                    } else {
+                        $("header").css("height", "4rem")
+                    }
+                    if (this.activeIndex == '1') { //判断是否滚动到指定页
+                        if (firstTap) { //判断是否是第一次滚动到该页
+                            firstTap = false;
+                            // audio.play()
+                            $(".s-aboutme-textarea").css("transform", "scale(1)")
+                        }
+                    }
+                    if (this.activeIndex == 2) {
+
+                    }
+                    if (this.activeIndex == 3) {
+                        $(".s-pro-inner").css("transform", "translateY(0)")
                     }
                 }
-                if (this.activeIndex == 2) {
-
-                }
-                if (this.activeIndex == 3) {
-                    $(".s-pro-inner").css("transform", "translateY(0)")
-                }
-            }
-        },
-    }
+            },
+        }
     )
 
     var urla = ""
+
     // 在页面开始之初获取ajax
     async function aa() {
-        try{
-            // await $.ajax({ url: `https://autumnfish.cn/song/url?id="518894283"`, method: "get" }).then(res => {
-            //     console.log(res.data[0].url);
-            //     urla = res.data[0].url
-            // })
-            // console.log(urla);
-            //
+        // await $.ajax({ url: `https://autumnfish.cn/song/url?id="518894283"`, method: "get" }).then(res => {
+        //     console.log(res.data[0].url);
+        //     urla = res.data[0].url
+        // })
+        // console.log(urla);
+        //
 
 
-            // audio 设置
-            var audio = new Audio()
-            // audio.src = "http://www.ytmp3.cn/down/32000.mp3";
-            audio.src = 'http://bingchuan.work/static/confession.mp3';
-            audio.loop = "loop";
-            audio.preload = "auto"
+        // audio 设置
+        var audio = new Audio()
+        // audio.src = "http://www.ytmp3.cn/down/32000.mp3";
+        audio.src = 'http://bingchuan.work/static/confession.mp3';
+        audio.loop = "loop";
+        audio.preload = "auto"
 
-            $(".music-player").on("click", function () {
-                if (audio.paused) {
-                    console.log(audio.src);
-                    audio.play();
+        $(".music-player").on("click", function () {
+            try {
+                var phone = navigator.userAgent;
+                console.log(phone);
+                if (phone.indexOf('Android') > -1 || phone.indexOf('Linux') > -1) {
+                    // console.log("安卓手机");
+                } else if (phone.indexOf('iPhone') > -1) {
+                    // console.log("苹果手机");
+                    throw true
+                } else if (phone.indexOf('Windows Phone') > -1) {
+                    // console.log("Windows 手机");
                 } else {
-                    console.log(22222);
-                    audio.pause();
+                    // console.log("无法识别")
                 }
-            })
-            audio.onplay = function () {
-                $(".music-player").addClass("music-playing")
-                $("header").css("background-color", "transparent")
-                $("header").addClass("rainbow")
+            } catch (e) {
+                console.log(e)
+                console.log('不支持该浏览器,请更换')
+                alert('未兼容该浏览器,请更换浏览器!')
+                return
             }
-            audio.onpause = function () {
-                $(".music-player").removeClass("music-playing")
-                $("header").css("background-color", "#000")
-                $("header").removeClass("rainbow")
+            if (audio.paused) {
+                console.log(audio.src);
+                audio.play();
+            } else {
+                console.log(22222);
+                audio.pause();
             }
-
-        }catch (e) {
-           window.alert('未兼容该浏览器!')
+        })
+        audio.onplay = function () {
+            $(".music-player").addClass("music-playing")
+            $("header").css("background-color", "transparent")
+            $("header").addClass("rainbow")
+        }
+        audio.onpause = function () {
+            $(".music-player").removeClass("music-playing")
+            $("header").css("background-color", "#000")
+            $("header").removeClass("rainbow")
         }
 
+
     }
+
     aa()
-
-
 
 
     // canvas刮刮卡设置
