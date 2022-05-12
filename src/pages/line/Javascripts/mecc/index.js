@@ -203,7 +203,7 @@ window.onload = function () {
         // audio 设置
         var audio = new Audio()
         // audio.src = "http://www.ytmp3.cn/down/32000.mp3";
-        audio.src = 'http://bingchuan.work/static/confession.mp3';
+        audio.src = '/static/confession.mp3';
         audio.loop = "loop";
         audio.preload = "auto"
 
