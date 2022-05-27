@@ -1,0 +1,102 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>文件上传</title>
+    <style>
+        .file {
+            position: relative;
+            display: inline-block;
+            background: #133d63;
+            border: 0.1rem solid #99d3f5;
+            border-radius: 0.2rem;
+            padding: 0.2rem 0.6rem;
+            overflow: hidden;
+            color: #f0faff;
+            text-decoration: none;
+            text-indent: 0;
+            line-height: 1.5rem;
+            font-size: 0.8rem;
+            margin-left: 7rem;
+        }
+        .file input {
+            position: absolute;
+            font-size: 0.8rem;
+            right: 0;
+            top: 0;
+            opacity: 0;
+            cursor: pointer;
+        }
+        .file:hover {
+            background: #aadffd;
+            border-color: #78c3f3;
+            color: #004974;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+<div class="file">
+    上传文件
+    <input type="file" name="image" accept="image/*" onchange="upload()">
+<!--    <form action="uploadfile.do" method="post" enctype="multipart/form-data">-->
+<!--        &lt;!&ndash;上传上来的是文本格式，用enctype转换成数据格式&ndash;&gt;-->
+<!--        <input type="file" name="myfile"/>&lt;!&ndash;file为专门使用上传的表单项,multiple允许上传多个,accept="image/gif, image/jpeg"&ndash;&gt;-->
+<!--        <button>上传</button>-->
+<!--    </form>-->
+</div>
+<script src="/utils/axios.js"></script>
+
+<script type="module" >
+import http from "./utils/api/index.js"
+let api =  http(axios)
+api.dowload({file:'test'})
+</script>
+
+<script type="text/javascript">
+    function upload(event) {
+        var e=window.event||event;
+        console.log(e)
+        // 获取当前选中的文件
+        var File = e.target.files[0];
+        console.log(File);//打印值看下面图片,简单点的话我们直接把这个数据给后台处理就可以了
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    function logMethod() {
+
+    }
+
+    class Person3 {
+        constructor(name) {
+            this.name = name;
+        }
+        logMethod
+        sayHello(name) {
+            console.log(`你好${name},我是${this.name}`);
+        }
+    }
+    let y3 = new Person3("嘉俊");
+    y3.sayHello("侨");
+</script>
+</body>
+</html>
+

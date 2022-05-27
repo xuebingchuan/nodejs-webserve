@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
+    <title>React App</title>
+  </head>
+  <body>
+  </body>
+  <script>
+    //发送数据给后端
+    function sendHttp() {
+      var xhr = new XMLHttpRequest();
+      xhr.open('POST', 'http://10.254.111.220:80/post_ibox');
+      xhr.setRequestHeader("Content-type", "application/json;charset=UTF-8; */*");
+      // xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      xhr.send(JSON.stringify({a:1}));
+      xhr.onreadystatechange =  function() {
+        if(xhr.status == 200){
+          console.log("成功")
+        }else{
+          console.log("失败")
+        }
+      };
+      xhr.onerror = function (error) {
+        console.log(error)
+      }
+    }
+
+    sendHttp()
+  </script>
+</html>
