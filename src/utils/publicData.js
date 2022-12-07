@@ -11,5 +11,3 @@ exports.totalData = {
     },
 
 }
-
-

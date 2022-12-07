@@ -7,7 +7,7 @@ let querystring = require('querystring');
  * */
 getHttpType = function (name){
     try{
-        var data=fs.readFileSync('./node_modules/static/mime.json'); //同步方法
+        var data=fs.readFileSync('./src/methods/static/mime.json'); //同步方法
         let mimeObj = JSON.parse(data.toString())
         return mimeObj[name]
     }catch (e) {
