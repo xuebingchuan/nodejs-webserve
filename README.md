@@ -11,15 +11,15 @@
 
 [visit](https://github.com/xuebingchuan/nodejs-webserve) 
 
-  <a href="https://github.com/getgridea/gridea/releases/latest">
+  <a >
     <img src="https://img.shields.io/github/release/getgridea/gridea.svg?style=flat-square" alt="">
   </a>
 
-  <a href="https://github.com/getgridea/gridea/blob/master/LICENSE">
+  <a >
     <img src="https://img.shields.io/github/license/getgridea/gridea.svg?style=flat-square" alt="">
   </a>
 
-  <a href="https://github.com/getgridea/gridea/releases/latest">
+  <a >
     <img alt="GitHub All Releases" src="https://img.shields.io/github/downloads/getgridea/gridea/total.svg?color=%2312b886&style=flat-square">
   </a>
 
