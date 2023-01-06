@@ -10,11 +10,11 @@ _this.gainPortNetwork().then(({printIpPort,port}) => {
             if (route === '/') {
                 //没有路由的时候重定向为airpord的项目
                 vx.totalData.setPublicData('filename', 'airpord')
-                _this.trusteeshipPage.careContent(req, res, 'airpord')
+                _this.trusteeshipPage(req, res, 'airpord')
             } else if (_this.fileRouterList.findIndex(item => route === `/${item}`) !== -1) {
                 //读取项目首页的所需要的其他一些静态资源
                 vx.totalData.setPublicData('filename', route.slice(1, route.length))
-                _this.trusteeshipPage.careContent(req, res, route.slice(1, route.length))
+                _this.trusteeshipPage(req, res, route.slice(1, route.length))
             } else if (route.indexOf('/static') == 0) {
                 //单纯访问静态资源,前缀为/static的访问
                 _this.trusteeshipStatic(req, res, '')
