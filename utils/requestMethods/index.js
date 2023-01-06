@@ -60,7 +60,16 @@ module.exports = {
                     var query = urlObj.query;            //参数
                     res.setHeader('content-type', 'application/json;charset=utf8')
                     console.log(query, '参数')
-                    res.end(JSON.stringify({msg: '成功', code: 0, data: JSON.stringify(query)}))
+                    let rendMsg
+                    if (req.url == '/get_'){
+                        rendMsg = {msg: '成功', code: 0, data: JSON.stringify(query)}
+                    }else if (req.url.indexOf('/get_cdn/xue-vue2') == 0){
+                        rendMsg = fs.readFileSync(`./node_modules/xue-vue2/lib/main.js`).toString()
+                        res.end(rendMsg)
+
+                    }
+                    console.log(rendMsg)
+                    res.end(JSON.stringify(rendMsg))
                 }
             } catch (e) {
                 console.log(e)
