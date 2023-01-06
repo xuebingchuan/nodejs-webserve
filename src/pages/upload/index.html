@@ -47,55 +47,66 @@
 <!--        <button>上传</button>-->
 <!--    </form>-->
 </div>
-<script src="/utils/axios.js"></script>
-
-<script type="module" >
-import http from "./utils/api/index.js"
-let api =  http(axios)
-api.dowload({file:'test'})
-</script>
 
 <script type="text/javascript">
-    function upload(event) {
-        var e=window.event||event;
-        console.log(e)
-        // 获取当前选中的文件
-        var File = e.target.files[0];
-        console.log(File);//打印值看下面图片,简单点的话我们直接把这个数据给后台处理就可以了
-    }
+    // function upload(event) {
+    //     var e=window.event||event;
+    //     console.log(e)
+    //     // 获取当前选中的文件
+    //     var File = e.target.files[0];
+    //     console.log(File);//打印值看下面图片,简单点的话我们直接把这个数据给后台处理就可以了
+    //     var xhr = new XMLHttpRequest();
+    //     xhr.open('GET', 'http://192.168.40.231:8088/');
+    //     xhr.setRequestHeader("Content-type", "application/json;charset=UTF-8; */*");
+    //     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    //     // xhr.setRequestHeader("Content-type", "application/json;charset=UTF-8");
+    //     // xhr.setRequestHeader("Content-type", "multipart/form-data");
+    //     xhr.setRequestHeader("Access-Control-Allow-Origin", "*");   //是否允许跨域
+    //     // var formData = new FormData();
+    //     // formData.append('file', File);
+    //     xhr.send(JSON.stringify({A:"4"}));
+    //     xhr.onreadystatechange =  function() {
+    //         if(xhr.status == 200){
+    //             console.log("成功")
+    //         }else{
+    //             console.log("失败")
+    //         }
+    //     };
+    //     xhr.onerror = function (error) {
+    //         console.log(error)
+    //     }
+    // }
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    function logMethod() {
-
-    }
-
-    class Person3 {
-        constructor(name) {
-            this.name = name;
+    // 发送数据给后端
+    function upload() {
+            var e=window.event||event;
+            console.log(e)
+            // 获取当前选中的文件
+            var File = e.target.files[0];
+            console.log(File);//打印值看下面图片,简单点的话我们直接把这个数据给后台处理就可以了
+      var xhr = new XMLHttpRequest();
+      xhr.open('POST', 'http://192.168.40.231:8000/uploadImage');
+      xhr.setRequestHeader("Content-type", "application/json;charset=UTF-8; */*");
+      xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      xhr.setRequestHeader("Content-type", "multipart/form-data");
+        var formData = new FormData();
+        formData.append('file', File);
+       xhr.send(formData);
+      xhr.onreadystatechange =  function() {
+        if(xhr.status == 200){
+          console.log("成功")
+        }else{
+          console.log("失败")
         }
-        logMethod
-        sayHello(name) {
-            console.log(`你好${name},我是${this.name}`);
-        }
+      };
+      xhr.onerror = function (error) {
+        console.log(error)
+      }
     }
-    let y3 = new Person3("嘉俊");
-    y3.sayHello("侨");
+    sendHttp()
 </script>
 </body>
 </html>

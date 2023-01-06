@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>文件上传</title>
+</head>
+<body>
+<div class="file">
+    <form action="/fileUpload" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" id="">
+        <br />
+        <input type="submit" value="上传文件" />
+    </form>
+<!--    上传文件-->
+<!--    <input type="file" name="image" onchange="upload()">-->
+</div>
+
+<script type="text/javascript">
+    function upload(event) {
+        var e=window.event||event;
+        console.log(e)
+        // 获取当前选中的文件
+        var File = e.target.files[0];
+        console.log(File);//打印值看下面图片,简单点的话我们直接把这个数据给后台处理就可以了
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', 'http://127.0.0.1:8000/fileUpload');
+        // xhr.setRequestHeader("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9");
+        // xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
+        // xhr.setRequestHeader("Upgrade-Insecure-Requests", "1");
+        var formData = new FormData();
+        formData.append('files', File);
+        xhr.send(formData);
+        xhr.onreadystatechange =  function() {
+            if(xhr.status == 200){
+                console.log("成功")
+            }else{
+                console.log("失败")
+            }
+        };
+        xhr.onerror = function (error) {
+            console.log(error)
+        }
+    }
+</script>
+</body>
+</html>
+

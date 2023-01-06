@@ -57,7 +57,7 @@ module.exports = {
                     var query = urlObj.query;            //参数
                     res.setHeader('content-type', 'application/json;charset=utf8')
                     console.log(query,'参数')
-                    res.end(JSON.stringify({msg:'上传成功',code:0,data:JSON.stringify(query)}))
+                    res.end(JSON.stringify({msg:'成功',code:0,data:JSON.stringify(query)}))
                 }
             }catch (e) {
                 console.log(e)

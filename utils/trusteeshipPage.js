@@ -4,7 +4,7 @@
 
 let fs = require('fs')
 let path = require('path')
-let gainContenType = require('gainContenType')
+let gainContenType = require('./gainContenType')
 
 
 
