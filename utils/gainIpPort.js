@@ -1,11 +1,10 @@
-
 /**
  * @Description: 获取ip及端口的工具类
  **/
 
-var net = require('net')
 
-module.exports = {
+var net = require('net')
+ exp = {
     /**
      * way:获取当前的网络ip并推送出去
      * */
@@ -50,9 +49,10 @@ module.exports = {
             })
             server.on('error', function (err) {
                 if (err.code === 'EADDRINUSE') { // 端口已经被使用
-                    resolve(port+1)
+                    resolve(exp.portIsOccupied(port + 1))
                 }
             })
         })
     }
 }
+module.exports = exp
