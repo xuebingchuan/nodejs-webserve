@@ -1,22 +1,46 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>文件上传</title>
 </head>
 <body>
 <div class="file">
-    <form action="/fileUpload" method="post" enctype="multipart/form-data">
-        <input type="file" name="file" id="">
-        <br />
-        <input type="submit" value="上传文件" />
-    </form>
-<!--    上传文件-->
-<!--    <input type="file" name="image" onchange="upload()">-->
+    <!--    <form action="/fileUpload" method="post" enctype="multipart/form-data">-->
+    <!--        <input type="file" name="file" id="">-->
+    <!--        <br />-->
+    <!--        <input type="submit" value="上传文件" />-->
+    <!--    </form>-->
+    上传文件
+    <input type="file" name="image" onchange="upload()">
 </div>
-
+<!--使用该方式引入依赖中的axios-->
+<script src="node_modules/axios/dist/axios.min.js"></script>
+<script>
+    //    请求主题中规范传递的数据格式的请求头有如下几种:   一般应用于文件的上传:FormData
+    //                                             一般应用于非文件的上传x-www-form-urlencodeed/json字符串/普通文本字符串/Buffer.....
+    //                                             通常来说还是看后端需要传递的数据格式是什么样的
+    // function upload(event) {
+    //     var e = window.event || event;
+    //     console.log(e)
+    //     // 获取当前选中的文件
+    //     var File = e.target.files[0];
+    //     console.log(File);//打印值看下面图片,简单点的话我们直接把这个数据给后台处理就可以了
+    //
+    //
+    //     let fm = new FormData
+    //     fm.append('file', File)
+    //     //@params: 参数1:post接口访问的ip,参数2:接口传递的参数,参数3:添加接口请求头数据规范
+    //     axios.post('http://127.0.0.1:8000/fileUpload', fm, {
+    //         headers: {
+    //             //告诉服务器我传的是什么数据格式
+    //             "Content-type": "multipart/form-data"
+    //         }
+    //     })
+    // }
+</script>
 <script type="text/javascript">
     function upload(event) {
         var e=window.event||event;
@@ -25,10 +49,11 @@
         var File = e.target.files[0];
         console.log(File);//打印值看下面图片,简单点的话我们直接把这个数据给后台处理就可以了
         var xhr = new XMLHttpRequest();
-        xhr.open('POST', 'http://127.0.0.1:8000/fileUpload');
+        xhr.open('POST', 'http://127.0.0.1:8000/file/uploading');
         // xhr.setRequestHeader("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9");
         // xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
         // xhr.setRequestHeader("Upgrade-Insecure-Requests", "1");
+        // xhr.setRequestHeader("Content-type", "multipart/form-data");
         var formData = new FormData();
         formData.append('files', File);
         xhr.send(formData);
