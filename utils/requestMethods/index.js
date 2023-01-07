@@ -13,6 +13,7 @@ function NowDate() {
 }
 let fs = require('fs')
 let url= require ('url')
+
 module.exports = {
     /**
      * parpams:
@@ -93,5 +94,42 @@ module.exports = {
                 console.log(e)
             }
         }
+    },
+    uploadF(req,res){
+        var multiparty = require('multiparty');//使用multiparty这个库文件,解析从客户端提交的本地文件
+        console.log(req)
+        //生成multiparty对象，并配置上传目标路径,如果上传的是同样的文件则是覆盖的效果
+        var form = new multiparty.Form({uploadDir: __dirname + '/public/'});
+        //上传完成后处理
+        form.parse(req, function (err, fields, {files}) {
+            console.log(err, fields, files)
+            var filesTmp = JSON.stringify(files, null, 2);
+
+            if (err) {
+                console.log('parse error: ' + err);
+            } else {
+                console.log('parse files: ' + filesTmp);
+                var inputFile = files[0];
+                var uploadedPath = inputFile.path;
+                var dstPath = __dirname + '/public/' + inputFile.originalFilename;
+                console.log(uploadedPath,dstPath)
+                //重命名为真实文件名
+                fs.rename(uploadedPath, dstPath, function (err) {
+                    if (err) {
+                        console.log('rename error: ' + err);
+                    } else {
+                        console.log('rename ok');
+                    }
+                });
+                let head = {
+                    'Access-Control-Allow-Origin': '*',
+                    'content-type': 'application/json;charset=utf8'}
+                res.writeHead(200,head)//设置响应请求头解决跨域问题
+                // res.end(util.inspect({fields: fields, files: filesTmp}));
+                res.end(JSON.stringify({code:200,msg:'上传成功',data:{
+                        path: '/public/' + inputFile.originalFilename
+                    }}))
+            }
+        });
     }
 }

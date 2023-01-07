@@ -21,6 +21,10 @@ _this.gainPortNetwork().then(({printIpPort,port}) => {
             } else if (route.indexOf('/dowload') == 0) {
                 //下载资源
                 _this.dowload(req, res)
+            }else if (route.indexOf('/uploadF') == 0) {
+                console.log('--------')
+                //上传资源
+                _this.uploadF(req, res)
             } else if (route.indexOf('/get_') == 0) {
                 //get请求
                 _this.get(req, res)

@@ -1,112 +1,49 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>文件上传</title>
-    <style>
-        .file {
-            position: relative;
-            display: inline-block;
-            background: #133d63;
-            border: 0.1rem solid #99d3f5;
-            border-radius: 0.2rem;
-            padding: 0.2rem 0.6rem;
-            overflow: hidden;
-            color: #f0faff;
-            text-decoration: none;
-            text-indent: 0;
-            line-height: 1.5rem;
-            font-size: 0.8rem;
-            margin-left: 7rem;
-        }
-        .file input {
-            position: absolute;
-            font-size: 0.8rem;
-            right: 0;
-            top: 0;
-            opacity: 0;
-            cursor: pointer;
-        }
-        .file:hover {
-            background: #aadffd;
-            border-color: #78c3f3;
-            color: #004974;
-            text-decoration: none;
-        }
-    </style>
 </head>
 <body>
 <div class="file">
+    <!--    <form action="/fileUpload" method="post" enctype="multipart/form-data">-->
+    <!--        <input type="file" name="file" id="">-->
+    <!--        <br />-->
+    <!--        <input type="submit" value="上传文件" />-->
+    <!--    </form>-->
     上传文件
-    <input type="file" name="image" accept="image/*" onchange="upload()">
-<!--    <form action="uploadfile.do" method="post" enctype="multipart/form-data">-->
-<!--        &lt;!&ndash;上传上来的是文本格式，用enctype转换成数据格式&ndash;&gt;-->
-<!--        <input type="file" name="myfile"/>&lt;!&ndash;file为专门使用上传的表单项,multiple允许上传多个,accept="image/gif, image/jpeg"&ndash;&gt;-->
-<!--        <button>上传</button>-->
-<!--    </form>-->
+    <input type="file" name="image" onchange="upload()">
 </div>
-
+<!--使用该方式引入依赖中的axios-->
 <script type="text/javascript">
-    // function upload(event) {
-    //     var e=window.event||event;
-    //     console.log(e)
-    //     // 获取当前选中的文件
-    //     var File = e.target.files[0];
-    //     console.log(File);//打印值看下面图片,简单点的话我们直接把这个数据给后台处理就可以了
-    //     var xhr = new XMLHttpRequest();
-    //     xhr.open('GET', 'http://192.168.40.231:8088/');
-    //     xhr.setRequestHeader("Content-type", "application/json;charset=UTF-8; */*");
-    //     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    //     // xhr.setRequestHeader("Content-type", "application/json;charset=UTF-8");
-    //     // xhr.setRequestHeader("Content-type", "multipart/form-data");
-    //     xhr.setRequestHeader("Access-Control-Allow-Origin", "*");   //是否允许跨域
-    //     // var formData = new FormData();
-    //     // formData.append('file', File);
-    //     xhr.send(JSON.stringify({A:"4"}));
-    //     xhr.onreadystatechange =  function() {
-    //         if(xhr.status == 200){
-    //             console.log("成功")
-    //         }else{
-    //             console.log("失败")
-    //         }
-    //     };
-    //     xhr.onerror = function (error) {
-    //         console.log(error)
-    //     }
-    // }
-
-
-
-
-    // 发送数据给后端
-    function upload() {
-            var e=window.event||event;
-            console.log(e)
-            // 获取当前选中的文件
-            var File = e.target.files[0];
-            console.log(File);//打印值看下面图片,简单点的话我们直接把这个数据给后台处理就可以了
-      var xhr = new XMLHttpRequest();
-      xhr.open('POST', 'http://192.168.40.231:8000/uploadImage');
-      xhr.setRequestHeader("Content-type", "application/json;charset=UTF-8; */*");
-      xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-      xhr.setRequestHeader("Content-type", "multipart/form-data");
+    function upload(event) {
+        var e=window.event||event;
+        console.log(e)
+        // 获取当前选中的文件
+        var File = e.target.files[0];
+        console.log(File);//打印值看下面图片,简单点的话我们直接把这个数据给后台处理就可以了
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', 'http://127.0.0.1:8088/uploadF');
+        // xhr.setRequestHeader("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9");
+        // xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
+        // xhr.setRequestHeader("Upgrade-Insecure-Requests", "1");
+        // xhr.setRequestHeader("Content-type", "multipart/form-data");
         var formData = new FormData();
-        formData.append('file', File);
-       xhr.send(formData);
-      xhr.onreadystatechange =  function() {
-        if(xhr.status == 200){
-          console.log("成功")
-        }else{
-          console.log("失败")
+        formData.append('files', File);
+        xhr.send(formData);
+        xhr.onreadystatechange =  function() {
+            if(xhr.status == 200){
+                console.log("成功")
+            }else{
+                console.log("失败")
+            }
+        };
+        xhr.onerror = function (error) {
+            console.log(error)
         }
-      };
-      xhr.onerror = function (error) {
-        console.log(error)
-      }
     }
-    sendHttp()
 </script>
 </body>
 </html>

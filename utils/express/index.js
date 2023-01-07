@@ -14,10 +14,8 @@ router.get('/', function (req, res, next) {
 router.post('/file/uploading', function (req, res, next) {
     //生成multiparty对象，并配置上传目标路径
     var form = new multiparty.Form({uploadDir: __dirname + '/public/'});
-    console.log(form)
     //上传完成后处理
     form.parse(req, function (err, fields, {files}) {
-        console.log(err,fields,files)
         var filesTmp = JSON.stringify(files, null, 2);
 
         if (err) {
@@ -26,7 +24,8 @@ router.post('/file/uploading', function (req, res, next) {
             console.log('parse files: ' + filesTmp);
             var inputFile = files[0];
             var uploadedPath = inputFile.path;
-            var dstPath = __dirname + '/public/files' + inputFile.originalFilename;
+            var dstPath = __dirname + '/public/' + inputFile.originalFilename;
+            console.log(uploadedPath,dstPath)
             //重命名为真实文件名
             fs.rename(uploadedPath, dstPath, function (err) {
                 if (err) {
@@ -39,7 +38,7 @@ router.post('/file/uploading', function (req, res, next) {
             res.write('Response data:\n\n');
             // res.end(util.inspect({fields: fields, files: filesTmp}));
             res.end(JSON.stringify({code:200,msg:'上传成功',data:{
-                    path: '/public/files' + inputFile.originalFilename
+                    path: '/public/' + inputFile.originalFilename
                 }}))
         }
     });
