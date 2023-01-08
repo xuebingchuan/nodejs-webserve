@@ -33,7 +33,7 @@ var net = require('net')
         } else {
             // 其他操作系统
         }
-        return ip;
+        return ip?ip:'127.0.0.1';
     },
 
     /**

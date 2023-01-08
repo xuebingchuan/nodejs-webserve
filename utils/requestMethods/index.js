@@ -23,7 +23,7 @@ module.exports = {
     post(req,res){
         if (req.url!='/favicon.ico') {
             try{
-                if (req.url.indexOf('/post_ibox') == 0 && req.method === 'POST') {
+                if (req.method === 'POST') {
                     // 定义了一个post变量，用于暂存请求体的信息
                     var data = '';
                     // 通过req的data事件监听函数，每当接受到请求体的数据，就累加到post变量中
@@ -53,7 +53,7 @@ module.exports = {
     get(req,res){
         if (req.url!='/favicon.ico') {
             try{
-                if (req.url.indexOf('/get_ibox') == 0 && req.method === 'GET') {
+                if (req.method === 'GET') {
                     var urlObj = url.parse(req.url ,true); //解析后得到的对象
                     var query = urlObj.query;            //参数
                     res.setHeader('content-type', 'application/json;charset=utf8')
@@ -76,15 +76,18 @@ module.exports = {
             try{
                 let routeUrl = route.split('/')
                 let fileName = routeUrl[routeUrl.length-1]
-                var fileStream =  fs.createReadStream(`./src/static/${fileName}`)
+                console.log(encodeURI(fileName),'---=-=-=-=-=-=')
+                //读取大型文件
+                var fileStream =  fs.createReadStream(`./src/static/${fileName}`)//得到文件输入流
+                console.log(encodeURI(fileStream))
                 let head = {
                     'Access-Control-Allow-Origin': '*',
-                    'Content-type': 'application/octet-stream',
-                    'Content-Disposition': `attachment;filename=${fileName}`}
+                    'Content-type': 'application/octet-stream',    //告诉浏览器这是一个二进制文件
+                    'Content-Disposition': `attachment;filename=${fileName}`}  //告诉浏览器这是一个需要下载的文件
                 res.writeHead(200,head)//解决跨域问题
                 fileStream.on('data', function (data) {
                     console.log('fa')
-                    res.write(data, 'utf-8');
+                    res.write(data, 'utf-8');  //文档内容以utf-8// 的格式写到response的输出流
                 });
                 fileStream.on('end', function () {
                     res.end();
@@ -95,10 +98,15 @@ module.exports = {
             }
         }
     },
+    /**
+     * parpams:
+     *       @req:接口响应拿到的数据对象,
+     *       @res:需要响应给客户端的api集合对象
+     * */
     uploadF(req,res){
         var multiparty = require('multiparty');//使用multiparty这个库文件,解析从客户端提交的本地文件
         console.log(req)
-        //生成multiparty对象，并配置上传目标路径,如果上传的是同样的文件则是覆盖的效果
+        //生成multiparty对象，并配置上传目标路径
         var form = new multiparty.Form({uploadDir: __dirname + '/public/'});
         //上传完成后处理
         form.parse(req, function (err, fields, {files}) {
@@ -113,7 +121,7 @@ module.exports = {
                 var uploadedPath = inputFile.path;
                 var dstPath = __dirname + '/public/' + inputFile.originalFilename;
                 console.log(uploadedPath,dstPath)
-                //重命名为真实文件名
+                //重命名为真实文件名,如果上传的是同样的文件则是覆盖的效果
                 fs.rename(uploadedPath, dstPath, function (err) {
                     if (err) {
                         console.log('rename error: ' + err);
