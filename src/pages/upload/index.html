@@ -19,7 +19,7 @@
 <!--使用该方式引入依赖中的axios-->
 <script type="text/javascript">
     function upload(event) {
-        var e=window.event||event;
+        var e = window.event || event;
         console.log(e)
         // 获取当前选中的文件
         var File = e.target.files[0];
@@ -33,10 +33,10 @@
         var formData = new FormData();
         formData.append('files', File);
         xhr.send(formData);
-        xhr.onreadystatechange =  function() {
-            if(xhr.status == 200){
+        xhr.onreadystatechange = function () {
+            if (xhr.status == 200) {
                 console.log("成功")
-            }else{
+            } else {
                 console.log("失败")
             }
         };
@@ -45,27 +45,50 @@
         }
     }
 
+    //post接口
+    // (function () {
+    //     var xhr = new XMLHttpRequest();
+    //     xhr.open('POST', 'http://127.0.0.1:8088/post_');
+    //     xhr.setRequestHeader("Content-Type", "application/json;charset=utf-8");
+    //     xhr.send(JSON.stringify({data:'测试数据'}));
+    //     xhr.onreadystatechange =  function() {
+    //         if(xhr.status == 200){
+    //             console.log("成功")
+    //         }else{
+    //             console.log("失败")
+    //         }
+    //     };
+    //     xhr.onerror = function (error) {
+    //         console.log(error)
+    //     }
+    // })()
 
-    (function () {
-        // var xhr = new XMLHttpRequest();
-        // xhr.open('POST', 'http://127.0.0.1:8088/post_');
-        // // xhr.setRequestHeader("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9");
-        // // xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
-        // // xhr.setRequestHeader("Upgrade-Insecure-Requests", "1");
-        // // xhr.setRequestHeader("Content-type", "multipart/form-data");
-        // xhr.setRequestHeader("Content-Type", "application/json;charset=utf-8");
-        // xhr.send(JSON.stringify({data:'测试数据'}));
-        // xhr.onreadystatechange =  function() {
-        //     if(xhr.status == 200){
-        //         console.log("成功")
-        //     }else{
-        //         console.log("失败")
-        //     }
-        // };
-        // xhr.onerror = function (error) {
-        //     console.log(error)
-        // }
-    })()
+    //dowload下载接口
+//     (function () {
+// //         var xhr = new XMLHttpRequest();
+// //         xhr.open('GET', 'http://127.0.0.1:8088/dowload?filename=新建文本文档.txt');
+// //         // xhr.setRequestHeader("Content-Type", "application/json;charset=utf-8");
+// //         xhr.send(JSON.stringify({data:'测试数据'}));
+// //         xhr.onreadystatechange =  function() {
+// //             if(xhr.status == 200){
+// //                 console.log("成功")
+// //
+// //             }else{
+// //                 console.log("失败")
+// //             }
+// //         };
+// //         xhr.onerror = function (error) {
+// //             console.log(error)
+// //         }
+//         let docA = document.createElement('a') //创建一个a标签元素
+//         docA.style.display = 'none'  //设置元素不可见
+//         docA.href = 'http://127.0.0.1:8088/dowload?filename=新建文本文档.txt' //设置下载地址
+//         document.body.appendChild(a)  //加入
+//         docA.click() //触发点击,下载
+//         document.body.removeChild(a) / 释放
+//
+//     })()
+
 </script>
 </body>
 </html>

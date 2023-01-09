@@ -16,6 +16,9 @@ const fs = require("fs");
 //fs.watch 监视某个文件或文件夹是否发生变化
 //fs.watchFile   fs.unwatchFile  监视文件的另一种方式
 //读取写入一个超大的文件两种方式   超大文件上传,使用断点传输的方式
+//-------------------------------------------------------------
+//fs.existsSync(path) 判断是否存在该文件或是文件夹
+//fs.mkdir新建文件夹   没有mkdirSync
 const example = {
     /**
      * @params:
@@ -50,25 +53,24 @@ exp = {
      *         @dataTypeObj:如果是新建文件可以选择写入内容的数据格式------object
      *@way: 判断该路径下是否存在该文件,不存在时是否新建
      * */
-    gainFile(path, isMk, type,fileCon,dataTypeObj) {
-        fs.existsSync(path, function (exists) {
-            if (!exists) {
-                //    不存在
-                if (!isMk) return
-                if (type == 'dir') {
-                    fs.mkdirSync(path, (err) => {
-                        //如果目录已存在，会报错
-                        if (err) {
-                            console.log(err)
-                            return false
-                        }
-                        console.log(`创建成功,路径:${path}`)
-                    })
-                } else if (type == 'file') {
-                    example.writeFile({path,fileCon,dataTypeObj})
-                }
+    gainFile(path, isMk, type, fileCon, dataTypeObj) {
+        let exists = fs.existsSync(path)
+        if (!exists) {
+            //    不存在
+            if (!isMk) return
+            if (type == 'dir') {
+                fs.mkdir(path, function(err){
+                    //如果目录已存在，会报错
+                    if (err) {
+                        console.log(err)
+                        return false
+                    }
+                    console.log(`创建成功,路径:${path}`)
+                })
+            } else if (type == 'file') {
+                example.writeFile({path, fileCon, dataTypeObj})
             }
-        });
+        }
     },
     /**
      * way:删除目标文件夹下的多有所有文件,文件夹下的文件也会递归删除
