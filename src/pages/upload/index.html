@@ -16,8 +16,13 @@
     上传文件
     <input type="file" name="image" onchange="upload()">
 </div>
-<!--使用该方式引入依赖中的axios-->
+<!--使用该方式引入axios-->
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
 <script type="text/javascript">
+/**
+ * way:上传接口
+ * */
     function upload(event) {
         var e = window.event || event;
         console.log(e)
@@ -44,8 +49,9 @@
             console.log(error)
         }
     }
-
-    //post接口
+/**
+ * way:post接口
+ * */
     // (function () {
     //     var xhr = new XMLHttpRequest();
     //     xhr.open('POST', 'http://127.0.0.1:8088/post_');
@@ -63,7 +69,9 @@
     //     }
     // })()
 
-    //dowload下载接口
+/**
+ * way:dowload下载接口
+ * */
 //     (function () {
 // //         var xhr = new XMLHttpRequest();
 // //         xhr.open('GET', 'http://127.0.0.1:8088/dowload?filename=新建文本文档.txt');
