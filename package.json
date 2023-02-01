@@ -5,7 +5,8 @@
   "main": "appeach.js",
   "dependencies": {
     "multiparty": "^4.2.3",
-    "xue-mini-vue": "^1.2.2"
+    "xue-mini-vue": "^1.2.2",
+    "ws": "^8.12.0"
   },
   "devDependencies": {},
   "scripts": {

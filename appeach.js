@@ -42,6 +42,10 @@ _this.gainPortNetwork().then(({printIpPort,port}) => {
     }).listen(port, () => {
         console.log(printIpPort)
     })
+    //下面开启别的服务
+    let gatherApp = require('./otherApp/index')
+    //启动websocket服务
+    gatherApp.websocketServe()
 })
 
 
