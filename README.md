@@ -6,7 +6,7 @@
     nodejs-webserve
   </h1>
   <h3 align="center">
-   仿照express框架源码使用nodejs原生搭建
+   使用nodejs原生搭建
   </h3>
 
 [visit](https://github.com/xuebingchuan/nodejs-webserve) 
@@ -19,15 +19,34 @@
     <img src="https://img.shields.io/github/license/getgridea/gridea.svg?style=flat-square" alt="">
   </a>
 
-  <a href="javascript:void(0);">
-    <img alt="GitHub All Releases" src="https://img.shields.io/github/downloads/getgridea/gridea/total.svg?color=%2312b886&style=flat-square">
+  <a href="https://github.com/xugaoyi/vuepress-theme-vdoing/actions?query=workflow%3ACI">
+    <img src="https://github.com/xugaoyi/vuepress-theme-vdoing/workflows/CI/badge.svg" alt="CI">
+  </a>
+  <a href="https://github.com/xugaoyi/vuepress-theme-vdoing/actions?query=workflow%3AbaiduPush">
+    <img src="https://github.com/xugaoyi/vuepress-theme-vdoing/workflows/baiduPush/badge.svg" alt="baiduPush">
   </a>
 
 </div>
-  1.仿照express使用nodejs原生搭建
+  1.使用nodejs,参考Express/Koa进行原生搭建,实现了常用的页面托管,上传下载断点传输等功能
 
-  2.目前已实现get,post,dowload接口对文件及数据进行读写
+  2.简历网站位于早期使用jq,swiper等技术进行搭建
 
-  3.可以托管及访问前端项目及其依赖资源
+  3.博客采用VuePress技术将markdown文档编译为html,再使用vue的模板进行处理
 
-  4.动态获取ip及未被占用接口方便访问
+  4.vue源码是参考vue2的源码之后实现了双向绑定,vDom,diff更新,$nextTick等功能
+
+  case1:<a href="http://localhost:8088/line">简历地址<a/>
+
+  <img src="http://localhost:8088/static/skill.png"  width="160px" height="80px">
+
+  case2:
+  <a href="http://localhost:8088/boke">博客地址<a/>
+
+  <img src="http://localhost:8088/static/boke.png"  width="160px" height="80px">
+
+  case3:
+  <a href="http://localhost:8088/line">vue源码示例<a/>
+
+  <img src="http://localhost:8088/static/vue2.png"  width="160px" height="80px">
+
+
