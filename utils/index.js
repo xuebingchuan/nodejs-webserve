@@ -12,7 +12,7 @@ module.exports = class miniVue {
     // 构造器并不是必写,一般在要对实例进行初始化操作的时候
     constructor() {
         copy.copyDir('./node_modules/xue-vue2/dist','./src/pages/boke',(err)=>{
-            console.log('拷贝文件夹执行出错,这是博客文件夹的拷贝,暂时不处理')
+            console.log('拷贝博客文件夹出错:',err)
         }) //拷贝依赖中的博客并写入托管页面中
         this.trusteeshipStatic = trusteeshipStatic
         this.trusteeshipPage = trusteeshipPage
