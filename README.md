@@ -37,16 +37,16 @@
 
   case1:<a href="http://175.178.22.195:8088/line">简历地址<a/>
 
-  <img src="http://175.178.22.195:8088/static/skill.png"  width="160px" height="80px">
+  <img src="https://pic.imgdb.cn/item/63db4d93ac6ef8601638e6e1.png"  width="160px" height="80px">
 
   case2:
   <a href="http://175.178.22.195:8088/boke">博客地址<a/>
 
-  <img src="http://175.178.22.195:8088/static/boke.png"  width="160px" height="80px">
+  <img src="https://pic.imgdb.cn/item/63db4d9cac6ef8601638f0de.pnn"  width="160px" height="80px">
 
   case3:
   <a href="http://175.178.22.195:8088/vue2">vue源码示例<a/>
 
-  <img src="http://175.178.22.195:8088/static/vue2.png"  width="160px" height="80px">
+  <img src="https://pic.imgdb.cn/item/63db4ccbac6ef860163790cc.jpg"  width="160px" height="80px">
 
 
