@@ -35,18 +35,20 @@
 
   4.vue源码是参考vue2的源码之后实现了双向绑定,vDom,diff更新,$nextTick等功能
 
+  5.基于nodejs的在线云盘程序,并支持图片,音频,pdf等文件进行在线预览(努力开发中,敬请期待....)
+
   case1:<a href="http://175.178.22.195:8088/line">简历地址<a/>
 
   <img src="https://pic.imgdb.cn/item/63db4d93ac6ef8601638e6e1.png"  width="160px" height="80px">
 
   case2:
-  <a href="http://175.178.22.195:8088/boke">博客地址<a/>
-
-  <img src="https://pic.imgdb.cn/item/63db4d9cac6ef8601638f0de.pnn"  width="160px" height="80px">
-
-  case3:
   <a href="http://175.178.22.195:8088/vue2">vue源码示例<a/>
 
   <img src="https://pic.imgdb.cn/item/63db4ccbac6ef860163790cc.jpg"  width="160px" height="80px">
+
+  case3:
+  <a href="http://175.178.22.195:8088/boke">博客地址<a/>
+
+  <img src="https://pic.imgdb.cn/item/63db4d9cac6ef8601638f0de.pnn"  width="160px" height="80px">
 
 
