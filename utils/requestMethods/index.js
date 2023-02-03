@@ -66,7 +66,7 @@ module.exports = {
                     }else if (req.url.indexOf('/get_cdn/xue-vue2') == 0){
                         rendMsg = fs.readFileSync(`./node_modules/xue-vue2/lib/main.js`).toString()
                         res.end(rendMsg)
-
+                        return
                     }
                     console.log(rendMsg)
                     res.end(JSON.stringify(rendMsg))
